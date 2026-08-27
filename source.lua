@@ -1,3 +1,4 @@
+task.spawn(function()
 --[[ ============================================================================
      ZABOTA MULTI DUMP PRO  —  универсальный дампер под ЛЮБЫЕ плейсы и режимы
      ============================================================================ ]]
@@ -280,6 +281,10 @@ local TARGETS = {
 local depth = 6
 local wantAttrs, wantProps, smart = true, true, true
 
+if game:GetService("CoreGui"):FindFirstChild("ZABOTA_MultiDump") then
+    game:GetService("CoreGui").ZABOTA_MultiDump:Destroy()
+end
+
 local gui = Instance.new("ScreenGui")
 gui.Name = "ZABOTA_MultiDump"
 gui.ResetOnSpawn = false
@@ -405,3 +410,4 @@ for _, t in ipairs(TARGETS) do
     btn.Parent = scroll; Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 6)
     btn.MouseButton1Click:Connect(function() runDump(t) end)
 end
+end)
